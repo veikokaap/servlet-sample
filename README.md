@@ -2,6 +2,12 @@
 
 Antud rakendus loob maven-i abil war faili, mida saab Tomcat-i üles laadida.
 
+Info Maven-i ning Servlet-te kohta on kirjas failides web.xml, pom.xml ja HelloServlet.java.
+Palun loe neid.
+
+Et Maven-i projekti IntelliJ-s avada, vaata järgnevat videot alates 2:10.
+[https://youtu.be/pt3uB0sd5kY?t=130](https://youtu.be/pt3uB0sd5kY?t=130)
+
 ## Mida on vaja
 
 * Installitud Tomcat
