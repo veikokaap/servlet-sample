@@ -4,13 +4,47 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
+  <!-- Kõik sellest reast üleval pool olevad read lihtsalt on vajalik
+  algus pom.xml failile, et Maven faili ära tunneks -->
+
+
+  <!-- Siin anname oma "projektile" nime ja versiooni -->
   <groupId>ee.veikokaap</groupId>
   <artifactId>servlet-sample</artifactId>
   <version>1.0</version>
-  <packaging>war</packaging><!--Veebi rakendus-->
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
+  <!--
+    packaging tähendab millist rakendust me tahame ehitada
+    WAR tähendab Web Application Archive või Web Application Resource
+    Tegu on lihtsalt .zip failiga, mille nimi on muudetud .war failiks ja mille sisu on järgnev:
+    veebi failid on WEB-INF kaustas ja java klassid WEB-INF/classes kaustas
+    Rakenduse konteiner nagu Tomcat oskab sellist faili hiljem lugeda
+   -->
+  <packaging>war</packaging>
+
+  <dependencies>
+    <!--
+      Siia lisame teegid ja raamatukogud, mida soovime oma rakendusele lisada
+      Lihtsustatult, tõmbab see juurde uusi klasse, mida saab java klassides import-de abil kasutada.
+      Nagu pythonis pidi mingeid mooduleid,pakke juurde installima.
+
+      Need teegid vaikimisi tõmmatakse antud lehelt: https://mvnrepository.com/artifact/
+      Lehti kust tõmmata saab ka juurde lisada, aga sul ei tohiks seda lähiajal vaja minna
+    -->
+    <dependency>
+      <!-- groupId ja artifactId ütlevad mis nimega pakki tõmmata. Versioon ütleb versiooni -->
+      <!-- See teek tuleb lehelt: https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api/4.0.1 -->
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>4.0.1</version>
+      <scope>provided</scope>
+      <!--
+        provided tähendab, et me soovime rakenduse kokku ehitamise ajal neid klasse kasutada,
+        kuid ära neid rakendusi war-i enda sisse kaasa pane, sest tomcat-l endal on need klassid juba olemas.
+        Kui võtame "scope" rea ära, siis ta paneb need klassid kaasa ja siis jookseb rakendus kokku, kuna
+        sama klass leitakse kahest kohast.
+      -->
+    </dependency>
+  </dependencies>
 
 </project>
