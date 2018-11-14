@@ -3,5 +3,32 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-  <display-name>Archetype Created Web Application</display-name>
+  <!--
+    Loome tomcat-i jaoks uue servlet,
+    millele anname suvalise nime ja ütleme mis klassis servleti "sisu" on.
+    Hea tava on siiski anda servlet-i endaga sarnane nimi.
+    Nii et parem nimi oleks näiteks "helloServlet" või "HelloServlet"
+    -->
+  <servlet>
+    <servlet-name>meieServletMillelSuvakasNimi</servlet-name>
+    <servlet-class>ee.veikokaap.HelloServlet</servlet-class>
+  </servlet>
+
+
+
+  <!--
+    Siin ühendame meie enne loodud servleti reaalselt mingi veebilehega kust seda avada saaks.
+    Oma arvutil joostes on su veebilehe nimi http://localhost:8080
+    8080 on lihtsalt port, mida tomcat vaikimisi kasutab
+    Enamus tava veebilehed jooksevad portidel 80 ja 443, nii et veebibrauser lihtsalt ei näita porti,
+    aga iga veebileht jookseb pordi peal. Nii et see 8080 ei ole seal midagi imelikku
+
+    url-pattern ütleb, et leht on "/hello", mis tähendab, et brauseris pead avama lehe:
+    http://localhost:8080/hello
+  -->
+  <servlet-mapping>
+    <servlet-name>meieServletMillelSuvakasNimi</servlet-name>
+    <url-pattern>/hello</url-pattern>
+  </servlet-mapping>
+
 </web-app>
